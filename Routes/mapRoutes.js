@@ -3,15 +3,16 @@ const { getAllMaps,getMap,createMap,updateMap, deleteMap} = require("../Controll
 
 const mapRouter = require("express").Router();
 const upload=require("../Middlewares/middlewares")
+const {verifyToken, verifyAdmin} = require("../Middlewares/middlewares");
 
 
-mapRouter.get("/" , getAllMaps)
-mapRouter.get("/:id" , getMap)
+mapRouter.get("/" ,verifyToken, getAllMaps)
+mapRouter.get("/:id",verifyToken , getMap)
 
-mapRouter.post("/",upload , createMap)
+mapRouter.post("/",upload,verifyToken,verifyAdmin , createMap)
 
-mapRouter.delete("/:id",deleteMap)
-mapRouter.patch("/:id",upload,updateMap)
+mapRouter.delete("/:id",verifyToken,verifyAdmin,deleteMap)
+mapRouter.patch("/:id",verifyToken,verifyAdmin,upload,updateMap)
 
 
 module.exports = mapRouter;
