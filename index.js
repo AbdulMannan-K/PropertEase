@@ -7,6 +7,9 @@ const cors = require("cors")
 
 
 const propertyRouter = require("./Routes/propertyRoutes");
+const houseRouter = require("./Routes/houseRoutes");
+const plotRouter = require("./Routes/plotRoutes");
+const projectRouter = require("./Routes/projectRoutes");
 const mapRouter = require("./Routes/mapRoutes");
 
 const userRouter = require("./Routes/userRoutes");
@@ -17,6 +20,9 @@ app.use(express.urlencoded({extended:true}))
 app.use("/files",express.static('public/uploads'));
 
 app.use( '/property',propertyRouter)
+app.use( '/house',houseRouter)
+app.use( '/plot',plotRouter)
+app.use( '/project',projectRouter)
 app.use( '/user', userRouter)
 app.use( '/map', mapRouter)
 
