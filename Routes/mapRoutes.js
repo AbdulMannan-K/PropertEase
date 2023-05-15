@@ -9,10 +9,10 @@ const {verifyToken, verifyAdmin} = require("../Middlewares/middlewares");
 mapRouter.get("/" ,verifyToken, getAllMaps)
 mapRouter.get("/:id",verifyToken , getMap)
 
-mapRouter.post("/",upload,verifyToken,verifyAdmin , createMap)
+mapRouter.post("/",verifyToken,verifyAdmin,(req,res,next)=>{upload} , createMap)
 
 mapRouter.delete("/:id",verifyToken,verifyAdmin,deleteMap)
-mapRouter.patch("/:id",verifyToken,verifyAdmin,upload,updateMap)
+mapRouter.patch("/:id",verifyToken,verifyAdmin,(req,res,next)=>{upload},updateMap)
 
 
 module.exports = mapRouter;

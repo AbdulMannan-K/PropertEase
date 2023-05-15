@@ -9,10 +9,12 @@ const {verifyAdmin, verifyToken} = require("../Middlewares/middlewares");
 houseRouter.get("/" ,verifyToken, getAllHouses)
 houseRouter.get("/:id",verifyToken , getHouse)
 
-houseRouter.post("/",verifyToken, verifyAdmin,upload , createHouse)
+houseRouter.post("/",verifyToken, verifyAdmin,(req,res,next)=> {
+    upload
+} , createHouse)
 
 houseRouter.delete("/:id",verifyToken,verifyAdmin,deleteHouse)
-houseRouter.patch("/:id",verifyToken,verifyAdmin,upload,updateHouse)
+houseRouter.patch("/:id",verifyToken,verifyAdmin,(req,res,next)=>{upload},updateHouse)
 
 
 module.exports = houseRouter;

@@ -1,9 +1,9 @@
-import jwt from "jsonwebtoken";
+const jwt = require("jsonwebtoken");
 
 const multer=require("multer")
 const path=require("path")
 
-export const verifyToken = (req,res,next)=>{
+const verifyToken = (req,res,next)=>{
     // const {token} = req.headers
     const token = req.headers['token']
     if(token){
@@ -20,7 +20,7 @@ export const verifyToken = (req,res,next)=>{
     }
 }
 
-export const verifyAdmin = (req,res,next)=>{
+ const verifyAdmin = (req,res,next)=>{
     if(req.decoded.role=='admin'){
         next()
     }else{
@@ -28,7 +28,7 @@ export const verifyAdmin = (req,res,next)=>{
     }
 }
 
-export const verifyPropertyDealer = (req,res,next)=>{
+ const verifyPropertyDealer = (req,res,next)=>{
     if(req.decoded.role=='dealer'){
         next()
     }else{
@@ -36,7 +36,7 @@ export const verifyPropertyDealer = (req,res,next)=>{
     }
 }
 
-export const middlewares=multer({
+const upload=multer({
     storage:multer.diskStorage({
         destination:function(req,file,cb){
             cb(null,"public/uploads")
@@ -53,3 +53,9 @@ export const middlewares=multer({
     })
 }).array("file",130)
 
+module.exports = {
+    upload,
+    verifyToken,
+    verifyAdmin,
+    verifyPropertyDealer
+}

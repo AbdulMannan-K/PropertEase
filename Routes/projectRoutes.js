@@ -5,8 +5,8 @@ const { verifyAdmin, verifyToken } = require("../Middlewares/middlewares");
 
 projectRouter.get("/", verifyToken, getAllProjects);
 projectRouter.get("/:id", verifyToken, getProject);
-projectRouter.post("/", verifyToken, verifyAdmin, upload, createProject);
+projectRouter.post("/", verifyToken, verifyAdmin, (req,res,next)=>{upload}, createProject);
 projectRouter.delete("/:id", verifyToken, verifyAdmin, deleteProject);
-projectRouter.patch("/:id", verifyToken, verifyAdmin, upload, updateProject);
+projectRouter.patch("/:id", verifyToken, verifyAdmin, (req,res,next)=>{upload}, updateProject);
 
 module.exports = projectRouter;
