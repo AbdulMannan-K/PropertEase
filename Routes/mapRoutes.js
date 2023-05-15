@@ -2,7 +2,7 @@
 const { getAllMaps,getMap,createMap,updateMap, deleteMap} = require("../Controller/mapController");
 
 const mapRouter = require("express").Router();
-const upload=require("../Middlewares/upload")
+const upload=require("../Middlewares/middlewares")
 
 
 mapRouter.get("/" , getAllMaps)

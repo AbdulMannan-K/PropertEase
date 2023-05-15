@@ -21,7 +21,7 @@ app.use( '/user', userRouter)
 app.use( '/map', mapRouter)
 
 
-// app.post("/upload",upload,(req,res)=>{
+// app.post("/middlewares",middlewares,(req,res)=>{
 //     console.log(req.body.file)
 //     res.send("Upload")
 // })

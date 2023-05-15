@@ -1,3 +1,5 @@
+import jwt from "jsonwebtoken";
+
 const multer=require("multer")
 const path=require("path")
 
@@ -34,7 +36,7 @@ export const verifyPropertyDealer = (req,res,next)=>{
     }
 }
 
-export const upload=multer({
+export const middlewares=multer({
     storage:multer.diskStorage({
         destination:function(req,file,cb){
             cb(null,"public/uploads")
